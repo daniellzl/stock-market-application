@@ -1,0 +1,29 @@
+<div class='container-fluid'>
+    <header class="row text-center">
+        <h1>Stock Trend Lines</h1>
+    </header>
+    <div class='form row text-center searchBar'>
+        <form class='form-inline' action="javascript:addStock();">
+            <div class='form-group'>
+                <input id="addStock" class="form-control" placeholder='Stock Symbol' autocomplete="off"/>
+            </div>
+            <button type="submit" class="btn btn-danger" title="Add stock to chart">Add Stock</button>
+        </form>
+        <p>Click <a href="https://quotes.wsj.com" title="Wall Street Journal Company List">here</a> to look for stock symbols.</p>
+    </div>
+    <div class='row text-center'>
+        <div class="btn-group">
+            <button id='1w' type="button" class="btn btn-danger" onclick="changeViewPeriod('1w')" title="Change view period">Week</button>
+            <button id='1m' type="button" class="btn btn-danger" onclick="changeViewPeriod('1m')" title="Change view period">Month</button>
+            <button id='3m' type="button" class="btn btn-danger" onclick="changeViewPeriod('3m')" title="Change view period">3 Months</button>
+            <button id='6m' type="button" class="btn btn-danger" onclick="changeViewPeriod('6m')" title="Change view period">6 Months</button>
+            <button id='1y' type="button" class="btn btn-danger" onclick="changeViewPeriod('1y')" title="Change view period">Year</button>
+            <button id='3y' type="button" class="btn btn-danger" onclick="changeViewPeriod('3y')" title="Change view period">3 Years</button>
+        </div>
+    </div>
+    <div class='row well well-sm text-center'>
+        <div class="ct-chart ct-golden-section"></div>
+    </div>
+    <div id='stocks'>
+    </div>
+</div>

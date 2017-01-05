@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stock Trend Lines</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+        <script src="bower_components/chartist/dist/chartist.min.js"></script>
+        <link rel="stylesheet" href="bower_components/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css">
+        <script src="bower_components/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src='/javascripts/scripts.js'></script>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+    </head>
+    <body>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{{body}}}
+        <footer class='text-center'>
+            <a href='https://www.freecodecamp.com/challenges/chart-the-stock-market' title="FreeCodeCamp Challenge Instructions">Credit</a> | <a href='https://github.com/daniellzl/stockMarketApp' title="GitHub Repository">GitHub</a>
+        </footer>
+    </body>
+</html>

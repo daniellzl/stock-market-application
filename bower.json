@@ -1,0 +1,21 @@
+{
+  "name": "stock_market_app",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Daniel Liang <mr.danielliang@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/daniellzl/stockMarketApp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chartist": "^0.9.4",
+    "chartist-plugin-tooltip": "^0.0.16"
+  }
+}
