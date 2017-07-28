@@ -5,7 +5,3 @@ The website displays the stock value trend lines over a period of time of a spec
 ## Website
 
 https://stock-market-dlzl.herokuapp.com
-
-## Credit
-
-https://www.freecodecamp.com/challenges/chart-the-stock-market

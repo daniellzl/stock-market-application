@@ -50,6 +50,12 @@ socket.on('displayGraph', function(info) {
     return new Chartist.Line('.ct-chart', data, options);
 });
 
+// display button with server info
+socket.on('displayButton', function(snapshot) {
+    $('#stocks').append('<div class="well col-xs-12 col-sm-6 col-md-6 col-lg-6"><div class="pull-left"><h3>' + snapshot.symbol + '</h3><h4>' + snapshot.name + '</h4><p>Last Trade Date: ' + snapshot.lastTradeDate + '</p><p>Last Trade Price: $' + snapshot.lastTradePriceOnly + '</p></div><div class="pull-right"><button type="button" class="btn btn-link" title="Remove stock" id="' + snapshot.symbol + '" onclick="remove(' + "'" + snapshot.symbol + "'" + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div>');
+    return false;
+});
+
 // display buttons with server info
 socket.on('displayButtons', function(snapshot) {
     $('#stocks').empty();

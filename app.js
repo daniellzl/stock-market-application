@@ -15,7 +15,8 @@ var model = require('./models/models');
 var app = express();
 
 // mongo database
-var connectionString = process.env.MONGO_DB;
+// var connectionString = process.env.MONGO_DB;
+var connectionString = 'mongodb://user:asdf@ds035816.mlab.com:35816/stock_market_app';
 mongoose.connect(connectionString);
 var db = mongoose.connection;
 db.on('error', function(){
@@ -76,23 +77,43 @@ Display
             var symbols = [];
             for (var i = 0, l = dbResults.length; i < l; i++) {
                 symbols.push(dbResults[i].symbol);
+                yahooFinance.quote({
+                	symbol: dbResults[i].symbol,
+                	modules: [ 'price' ]
+                }, function (err, quotes) {
+        			if (err) throw err;
+
+        			snapshot = {
+        				symbol: quotes.price.symbol,
+        				name: quotes.price.longName,
+        				lastTradeDate: dateFormat(quotes.price.regularMarketTime, 'm/d/yy'),
+        				lastTradePriceOnly: quotes.price.regularMarketPreviousClose
+        			}
+
+        			console.log(snapshot);
+        			
+		            // tell client browser to display buttons
+		            socket.emit('displayButton', snapshot);
+        		});
             }
+
+
             
-            // query yahoo finance for stock info of the day
-            yahooFinance.snapshot({
-                symbols: symbols,
-                fields: ['s', 'n', 'd1', 'l1']
-            }, function (err, snapshot) {
-                if (err) throw err;
+            // // query yahoo finance for stock info of the day
+            // yahooFinance.snapshot({
+            //     symbols: symbols,
+            //     fields: ['s', 'n', 'd1', 'l1']
+            // }, function (err, snapshot) {
+            //     if (err) throw err;
                 
-                // replace timestamps with dates
-                for (var i = 0, l = snapshot.length; i < l; i++) {
-                    snapshot[i].lastTradeDate = dateFormat(snapshot[i].lastTradeDate, 'm/d/yy');
-                }
+            //     // replace timestamps with dates
+            //     for (var i = 0, l = snapshot.length; i < l; i++) {
+            //         snapshot[i].lastTradeDate = dateFormat(snapshot[i].lastTradeDate, 'm/d/yy');
+            //     }
                 
-                // tell client browser to display buttons
-                socket.emit('displayButtons', snapshot);
-            });
+            //     // tell client browser to display buttons
+            //     socket.emit('displayButtons', snapshot);
+            // });
             
             // set date range to be queried
             var from = new Date();
